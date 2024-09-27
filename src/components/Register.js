@@ -1,84 +1,63 @@
-// src/components/Register.js
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
-import bcrypt from 'bcryptjs'; // Import bcrypt
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';  // Adjust path to your firebase file
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();  // Initialize navigate hook
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError('Passwords do not match!');
       return;
     }
-    
-    // Hash the password before sending it to Firebase
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    
+
     try {
-      // Pass the hashed password to Firebase for authentication
-      await createUserWithEmailAndPassword(auth, email, hashedPassword);
-      navigate("/");
+      await createUserWithEmailAndPassword(auth, email, password);
+      // Redirect to the home page after successful registration
+      navigate('/');
     } catch (error) {
-      setError(error.message);
+      setError('Failed to create an account. Please try again.');
     }
   };
 
   return (
     <div className="register-container">
-      <h2>Create a DEV@Deakin Account</h2>
-      {error && <p className="error">{error}</p>}
+      <h2>Register</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleRegister}>
-        <div className="form-group">
-          <label>Name</label>
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Confirm password</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn-create">Create</button>
+        <input
+          type="email"
+          placeholder="Your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Confirm password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Register</button>
       </form>
       <p>
-        Already have an account? <a href="/" className="login-link">Login</a>
+        Already have an account? <a href="/login">Login</a>
       </p>
     </div>
   );

@@ -1,52 +1,50 @@
-/* src/components/Register.css */
-.register-container {
-    width: 400px;
-    margin: 100px auto;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .btn-create {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .login-link {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .error {
-    color: red;
-    font-size: 14px;
-    text-align: center;
-  }
-  
+/* Center the form and set a defined width for larger screens */
+.signup-container {
+  max-width: 400px;  /* Limit the form width */
+  width: 100%;  /* Make sure it shrinks to fit small screens */
+  margin: 50px auto;  /* Center the form vertically and horizontally */
+  padding: 20px;
+  background-color: #f7f7f7;  /* Light background to highlight the form */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* A subtle shadow for depth */
+}
+
+/* Styling the form input fields */
+.signup-container input {
+  width: 100%;  /* Full width of the container */
+  padding: 12px;
+  margin: 8px 0;  /* More spacing between fields */
+  border: 1px solid #ccc;
+  border-radius: 6px;  /* Round the input fields for a softer look */
+  font-size: 16px;  /* Larger font size */
+}
+
+/* Button styling */
+.signup-container button {
+  width: 100%;  /* Full width button */
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.signup-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Label and heading styles */
+.signup-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;  /* Larger heading */
+}
+
+.signup-container label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}

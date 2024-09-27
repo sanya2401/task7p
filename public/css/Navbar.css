@@ -1,0 +1,36 @@
+/* General styling for the navbar */
+.navbar {
+    background-color: #333; /* Dark background */
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px; /* Adds space between the links */
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none; /* Removes the underline */
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .navbar-links a:hover {
+    color: #007bff; /* Changes link color to blue on hover */
+  }
+  
+  .navbar-links a:active {
+    color: #0056b3; /* Darker blue when the link is active/clicked */
+  }
+  
